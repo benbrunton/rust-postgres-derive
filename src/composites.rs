@@ -1,6 +1,6 @@
 use syn::{self, Ident, Type};
 
-use overrides::Overrides;
+use crate::overrides::Overrides;
 
 pub struct Field {
     pub name: String,
@@ -15,7 +15,7 @@ impl Field {
         let ident = raw.ident.as_ref().unwrap().clone();
         Ok(Field {
             name: overrides.name.unwrap_or_else(|| ident.to_string()),
-            ident,
+            ident: ident,
             type_: raw.ty.clone(),
         })
     }
